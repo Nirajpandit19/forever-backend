@@ -1,6 +1,6 @@
 // Function for add product
 import { v2 as cloudinary } from "cloudinary";
-import productModal from "../models/productModel.js";
+import productModel from "../models/productModel.js";
 const addProduct = async (req, res) => {
   try {
     const {
@@ -41,10 +41,10 @@ const addProduct = async (req, res) => {
     };
     console.log(productData);
 
-const product = new productModal(productData);
+    const product = new productModel(productData);
     await product.save();
 
-    res.json({success:true,message:"Product added successfully"});
+    res.json({ success: true, message: "Product added successfully" });
   } catch (error) {
     console.log(error);
 
@@ -59,7 +59,7 @@ const product = new productModal(productData);
 
 const listProduct = async (req, res) => {
   try {
-    const products = await productModal.find({});
+    const products = await productModel.find({});
     res.json({
       success: true,
       products,
@@ -77,7 +77,7 @@ const listProduct = async (req, res) => {
 
 const removeProduct = async (req, res) => {
   try {
-    await productModal.findByIdAndDelete(req.body.id);
+    await productModel.findByIdAndDelete(req.body.id);
     res.json({
       success: true,
       message: "Product removed successfully",
@@ -95,7 +95,7 @@ const removeProduct = async (req, res) => {
 const singleProductInfo = async (req, res) => {
   try {
     const { productId } = req.body;
-    const product = await productModal.findById(productId);
+    const product = await productModel.findById(productId);
     res.json({
       success: true,
       product,

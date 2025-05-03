@@ -1,4 +1,3 @@
-import e from "express";
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
@@ -6,7 +5,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: { 
+  description: {
     type: String,
     required: true,
   },
@@ -30,7 +29,7 @@ const productSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
-  bestSeller: {
+  bestseller: {
     type: Boolean,
   },
   date: {
@@ -38,6 +37,6 @@ const productSchema = new mongoose.Schema({
     required: true,
   },
 });
-const productModal =
+const productModel =
   mongoose.model.product || mongoose.model("product", productSchema);
-export default productModal;
+export default productModel;
